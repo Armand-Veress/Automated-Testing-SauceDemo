@@ -14,6 +14,9 @@ public class LoginPage {
     final private By loginCredentialsArea = By.id("login_credentials");
     final private By loginPasswordArea = By.cssSelector("[data-test='login-password']");
 
+    public static final String EXPECTED_TITLE = "Swag Labs";
+    public static final String ACCESS_DENIED_MSG_TEMPLATE = "Epic sadface: You can only access '%s' when you are logged in.";
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }

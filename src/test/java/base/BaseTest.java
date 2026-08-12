@@ -26,7 +26,6 @@ public class BaseTest {
 
             driver = browserType.createDriver(driverPath, browserPath);
             driver.manage().window().maximize();
-
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Illegal argument: [" + browser + "] is not defined in BrowserType.");
         } catch (Exception e) {
