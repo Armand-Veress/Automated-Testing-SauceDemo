@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SauceDemo DemoTests" verbose="1">
+
+    <test name="Firefox DemoTests">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="driverPath" value="drivers/geckodriver.exe"/>
+        <classes>
+            <class name="tests.DemoTest"/>
+        </classes>
+    </test>
+
+    <test name="Chrome DemoTests">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="driverPath" value="drivers/chromedriver.exe"/>
+        <classes>
+            <class name="tests.DemoTest"/>
+        </classes>
+    </test>
+
+<!--
+    <test name="Brave DemoTests">
+        <parameter name="browser" value="brave"/>
+        <parameter name="driverPath" value="drivers/chromedriver.exe"/>
+        <parameter name="browserPath" value="C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"/>
+        <classes>
+            <class name="tests.DemoTest"/>
+        </classes>
+    </test>
+-->
+
+</suite>
