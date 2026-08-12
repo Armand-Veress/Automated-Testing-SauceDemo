@@ -10,12 +10,9 @@ public class LoginPage {
     final private By passwordField = By.id("password");
     final private By loginButton = By.id("login-button");
     final private By errorMessage = By.cssSelector("[data-test='error']");
-
-    final private By loginCredentialsArea = By.id("login_credentials");
-    final private By loginPasswordArea = By.cssSelector("[data-test='login-password']");
+    final private By errorMessageCloseButton = By.cssSelector("[data-test='error-button']");
 
     public static final String EXPECTED_TITLE = "Swag Labs";
-    public static final String ACCESS_DENIED_MSG_TEMPLATE = "Epic sadface: You can only access '%s' when you are logged in.";
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -43,11 +40,19 @@ public class LoginPage {
         return driver.findElement(errorMessage).getText();
     }
 
-    public String getLoginCredentialsText() {
-        return driver.findElement(loginCredentialsArea).getText();
+    public boolean closeErrorMessagePopupSuccessfully() {
+        try {
+            driver.findElement(errorMessageCloseButton).click();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
-
-    public String getLoginPasswordText() {
-        return driver.findElement(loginPasswordArea).getText();
+    public boolean isErrorMessageDisplayed() {
+        try {
+            return driver.findElement(errorMessage).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -29,11 +29,15 @@ public class AccessControlTest extends BaseTest {
 
             String currentUrl = getDriver().getCurrentUrl();
             LoginPage loginPage = new LoginPage(getDriver());
-            Assert.assertEquals(currentUrl, baseUrl, "LoggedOut User was not redirected");
+            Assert.assertEquals(currentUrl, baseUrl, "LoggedOut User was not redirected to LogIn");
+
+            Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");
 
             String expectedError = String.format(ErrorMessages.ACCESS_DENIED_TEMPLATE.getMessage(), "/" + page);
             String errorMsg = loginPage.getErrorMessageText();
             Assert.assertEquals(errorMsg, expectedError, "Access denied error response is wrong");
+
+            Assert.assertTrue(loginPage.closeErrorMessagePopupSuccessfully(), "Error when closing an expected error message.");
         }
     }
 }
