@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.ConfigReader;
+import utils.ErrorMessages;
+import utils.Routes;
 
 public class AccessControlTest extends BaseTest {
 
@@ -22,15 +24,14 @@ public class AccessControlTest extends BaseTest {
     public void testAccessLoggedOut(){
         String baseUrl = ConfigReader.getProperty("BASE_URL");
         getDriver().get(baseUrl);
-        String[] pages = {"inventory.html", "cart.html"};
-        for(String page : pages) {
+        for(String page : Routes.PROTECTED_PAGES) {
             getDriver().get(baseUrl + page);
 
             String currentUrl = getDriver().getCurrentUrl();
             LoginPage loginPage = new LoginPage(getDriver());
             Assert.assertEquals(currentUrl, baseUrl, "LoggedOut User was not redirected");
 
-            String expectedError = String.format(LoginPage.ACCESS_DENIED_MSG_TEMPLATE, "/" + page);
+            String expectedError = String.format(ErrorMessages.ACCESS_DENIED_TEMPLATE.getMessage(), "/" + page);
             String errorMsg = loginPage.getErrorMessageText();
             Assert.assertEquals(errorMsg, expectedError, "Access denied error response is wrong");
         }

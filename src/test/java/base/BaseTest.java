@@ -8,10 +8,10 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    private WebDriver driver;
+    final private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public WebDriver getDriver() {
-        return this.driver;
+        return driver.get();
     }
 
     @Parameters({"browser", "driverPath", "browserPath"})
@@ -24,8 +24,8 @@ public class BaseTest {
         try {
             BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
 
-            driver = browserType.createDriver(driverPath, browserPath);
-            driver.manage().window().maximize();
+            driver.set(browserType.createDriver(driverPath, browserPath));
+            getDriver().manage().window().maximize();
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Illegal argument: [" + browser + "] is not defined in BrowserType.");
         } catch (Exception e) {
@@ -35,12 +35,12 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        if (driver != null) {
-            try {
-                driver.quit();
-            } catch (Exception e) {
-                System.out.println("Unexpected error when quiting Driver -> " + e.getMessage());
-            }
+        try {
+            getDriver().quit();
+        } catch (Exception e) {
+            System.out.println("Unexpected error when quiting Driver -> " + e.getMessage());
+        } finally {
+            driver.remove();
         }
     }
 }
