@@ -1,12 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="SauceDemo DemoTests" verbose="1" parallel="tests" thread-count="2">
+<suite name="SauceDemo AuthTests" verbose="1" parallel="tests" thread-count="2">
 
     <test name="Firefox AuthTests" parallel="methods" thread-count="2">
         <parameter name="browser" value="firefox"/>
         <parameter name="driverPath" value="drivers/geckodriver.exe"/>
         <classes>
-            <class name="tests.AccessControlTest"/>
-            <class name="tests.LoginTest"/>
+            <class name="tests.auth.AccessControlTest"/>
+            <class name="tests.auth.LoginTest"/>
+            <class name="tests.auth.LogoutTest"/>
         </classes>
     </test>
 
@@ -14,8 +15,9 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="driverPath" value="drivers/chromedriver.exe"/>
         <classes>
-            <class name="tests.AccessControlTest"/>
-            <class name="tests.LoginTest"/>
+            <class name="tests.auth.AccessControlTest"/>
+            <class name="tests.auth.LoginTest"/>
+            <class name="tests.auth.LogoutTest"/>
         </classes>
     </test>
 

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.DefaultUserCredentials;
 
 public class LoginPage {
     final private WebDriver driver;
@@ -33,6 +34,12 @@ public class LoginPage {
     public void loginAs(String username, String password) {
         enterUsername(username);
         enterPassword(password);
+        clickLoginButton();
+    }
+
+    public void loginAs(DefaultUserCredentials user) {
+        enterUsername(user.getUsername());
+        enterPassword(user.getPassword());
         clickLoginButton();
     }
 

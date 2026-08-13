@@ -1,4 +1,4 @@
-package tests;
+package tests.auth;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
     @Test(dataProvider = "validLoginCredentials", dataProviderClass = DataProviders.class)
     public void testSuccessfulLogin(String username, String password) {
         String baseUrl = ConfigReader.getProperty("BASE_URL");
-        getDriver().get(baseUrl);
+        getDriver().get(baseUrl + Routes.LOGIN);
 
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginAs(username, password);
@@ -26,13 +26,13 @@ public class LoginTest extends BaseTest {
     @Test(dataProvider = "invalidLoginCredentials", dataProviderClass = DataProviders.class)
     public void testFailedLogin(String username, String password, String expectedErrorMsg) {
         String baseUrl= ConfigReader.getProperty("BASE_URL");
-        getDriver().get(baseUrl);
+        getDriver().get(baseUrl + Routes.LOGIN);
 
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginAs(username, password);
 
         String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, baseUrl, "Login should have failed, but the test was redirected to a different page: " + currentUrl);
+        Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "Login should have failed, but the test was redirected to a different page: " + currentUrl);
 
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");
 

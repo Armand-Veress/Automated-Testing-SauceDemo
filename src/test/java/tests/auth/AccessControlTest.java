@@ -1,4 +1,4 @@
-package tests;
+package tests.auth;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -16,7 +16,7 @@ public class AccessControlTest extends BaseTest {
         getDriver().get(baseUrl);
         String currentUrl = getDriver().getCurrentUrl();
         String title = getDriver().getTitle();
-        Assert.assertEquals(currentUrl, baseUrl, "Base url not reached. Test was redirected to: " + currentUrl);
+        Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "Base url not reached. Test was redirected to: " + currentUrl);
         Assert.assertEquals(title, LoginPage.EXPECTED_TITLE, "The page title is wrong wrong: " + title);
     }
 
@@ -29,7 +29,7 @@ public class AccessControlTest extends BaseTest {
 
             String currentUrl = getDriver().getCurrentUrl();
             LoginPage loginPage = new LoginPage(getDriver());
-            Assert.assertEquals(currentUrl, baseUrl, "LoggedOut User was not redirected to LogIn");
+            Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "LoggedOut User was not redirected to LogIn");
 
             Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");
 

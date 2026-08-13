@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import utils.ConfigReader;
 
 public class BaseTest {
 
@@ -17,9 +18,13 @@ public class BaseTest {
     @Parameters({"browser", "driverPath", "browserPath"})
     @BeforeMethod
     public void setUp(
-            @Optional("firefox") String browser,
-            @Optional("drivers/geckodriver.exe") String driverPath,
-            @Optional("") String browserPath) {
+            @Optional String browser,
+            @Optional String driverPath,
+            @Optional String browserPath) {
+
+        browser = resolveParameter(browser, "LOCAL_DEFAULT_BROWSER");
+        driverPath = resolveParameter(driverPath, "LOCAL_DRIVER_PATH");
+        browserPath = resolveParameter(browserPath, "LOCAL_BROWSER_PATH");
 
         try {
             BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
@@ -42,5 +47,13 @@ public class BaseTest {
         } finally {
             driver.remove();
         }
+    }
+
+    private String resolveParameter(String parameterValue, String configValue) {
+        if (parameterValue != null && !parameterValue.trim().isEmpty()) {
+            return parameterValue;
+        }
+        String fallback = ConfigReader.getProperty(configValue);
+        return (fallback != null) ? fallback : "";
     }
 }
