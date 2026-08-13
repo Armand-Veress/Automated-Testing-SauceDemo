@@ -26,4 +26,13 @@ public class DataProviders {
                 {"invalidUsername", "invalidPassword", "Epic sadface: Username and password do not match any user in this service"}
         };
     }
+
+    @DataProvider(name = "protectedPages", parallel = true)
+    public static Object[][] getProtectedPagesData() {
+        return new Object[][] {
+             // [0] Page URL without BASE_URL
+                {Routes.INVENTORY},
+                {Routes.CART}
+        };
+    }
 }

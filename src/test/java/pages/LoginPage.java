@@ -1,12 +1,11 @@
 package pages;
 
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.DefaultUserCredentials;
 
-public class LoginPage {
-    final private WebDriver driver;
-
+public class LoginPage extends BasePage {
     final private By usernameField = By.id("user-name");
     final private By passwordField = By.id("password");
     final private By loginButton = By.id("login-button");
@@ -16,19 +15,19 @@ public class LoginPage {
     public static final String EXPECTED_TITLE = "Swag Labs";
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void enterUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
+        typeText(usernameField, username);
     }
 
     public void enterPassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
+        typeText(passwordField, password);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        clickElement(loginButton);
     }
 
     public void loginAs(String username, String password) {
@@ -44,22 +43,19 @@ public class LoginPage {
     }
 
     public String getErrorMessageText() {
-        return driver.findElement(errorMessage).getText();
+        return getElementText(errorMessage);
     }
 
     public boolean closeErrorMessagePopupSuccessfully() {
         try {
-            driver.findElement(errorMessageCloseButton).click();
+            clickElement(errorMessageCloseButton);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
+
     public boolean isErrorMessageDisplayed() {
-        try {
-            return driver.findElement(errorMessage).isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
+        return isElementDisplayed(errorMessage);
     }
 }

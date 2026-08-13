@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.ConfigReader;
+import utils.DataProviders;
 import utils.ErrorMessages;
 import utils.Routes;
 
@@ -20,24 +21,23 @@ public class AccessControlTest extends BaseTest {
         Assert.assertEquals(title, LoginPage.EXPECTED_TITLE, "The page title is wrong wrong: " + title);
     }
 
-    @Test
-    public void testAccessLoggedOut(){
+    @Test(dataProvider = "protectedPages", dataProviderClass = DataProviders.class)
+    public void testAccessLoggedOut(String page){
         String baseUrl = ConfigReader.getProperty("BASE_URL");
-        getDriver().get(baseUrl);
-        for(String page : Routes.PROTECTED_PAGES) {
-            getDriver().get(baseUrl + page);
+        getDriver().get(baseUrl + Routes.LOGIN);
 
-            String currentUrl = getDriver().getCurrentUrl();
-            LoginPage loginPage = new LoginPage(getDriver());
-            Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "LoggedOut User was not redirected to LogIn");
+        getDriver().get(baseUrl + page);
 
-            Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");
+        String currentUrl = getDriver().getCurrentUrl();
+        LoginPage loginPage = new LoginPage(getDriver());
+        Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "LoggedOut User was not redirected to LogIn");
 
-            String expectedError = String.format(ErrorMessages.ACCESS_DENIED_TEMPLATE.getMessage(), "/" + page);
-            String errorMsg = loginPage.getErrorMessageText();
-            Assert.assertEquals(errorMsg, expectedError, "Access denied error response is wrong");
+        Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");
 
-            Assert.assertTrue(loginPage.closeErrorMessagePopupSuccessfully(), "Error when closing an expected error message.");
-        }
+        String expectedError = String.format(ErrorMessages.ACCESS_DENIED_TEMPLATE.getMessage(), "/" + page);
+        String errorMsg = loginPage.getErrorMessageText();
+        Assert.assertEquals(errorMsg, expectedError, "Access denied error response is wrong");
+
+        Assert.assertTrue(loginPage.closeErrorMessagePopupSuccessfully(), "Error when closing an expected error message.");
     }
 }

@@ -45,9 +45,9 @@ public enum BrowserType {
             try {
                 System.setProperty("webdriver.gecko.driver", driverPath);
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-//                firefoxOptions.addArguments("--headless");
-//                firefoxOptions.addArguments("--width=1920");
-//                firefoxOptions.addArguments("--height=1080");
+                firefoxOptions.addArguments("--headless");
+                firefoxOptions.addArguments("--width=1920");
+                firefoxOptions.addArguments("--height=1080");
                 return new FirefoxDriver(firefoxOptions);
             } catch (WebDriverException e) {
                 throw new RuntimeException("Error: couldn't initialize Firefox. ->  " + e.getMessage());
