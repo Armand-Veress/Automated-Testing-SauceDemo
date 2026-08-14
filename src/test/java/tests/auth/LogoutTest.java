@@ -26,12 +26,13 @@ public class LogoutTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), baseUrl + Routes.INVENTORY, "Logged-in user was redirected when opening a new tab.");
 
         InventoryPage inventoryPage = new InventoryPage(getDriver());
-        Assert.assertTrue(inventoryPage.isHamburgerMenuButtonDisplayed(), "Hamburger menu button is not displayed.");
+        Assert.assertTrue(inventoryPage.getHeaderComponent().isHamburgerMenuButtonDisplayed(), "Hamburger menu button is not displayed.");
 
-        inventoryPage.clickHamburgerMenuButton();
-        Assert.assertTrue(inventoryPage.isLogoutButtonDisplayed(), "Logout button is not displayed.");
+        inventoryPage.getHeaderComponent().clickHamburgerMenuButton();
+        boolean isLogoutButtonDisplayed = inventoryPage.getHeaderComponent().getSideMenuComponent().isLogoutButtonDisplayed();
+        Assert.assertTrue(isLogoutButtonDisplayed, "Logout button is not displayed.");
 
-        inventoryPage.clickLogoutButton();
+        inventoryPage.getHeaderComponent().getSideMenuComponent().clickLogoutButton();
         Assert.assertEquals(getDriver().getCurrentUrl(), baseUrl, "Logout failed: Logged-out user was not redirected to login page.");
 
         getDriver().switchTo().window(mainWindow);

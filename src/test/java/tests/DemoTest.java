@@ -24,7 +24,7 @@ public class DemoTest extends BaseTest {
         loginPage.loginAs("standard_user", "secret_sauce");
 
         InventoryPage inventoryPage = new InventoryPage(getDriver());
-        boolean isCartDisplayed = inventoryPage.isShoppingCartDisplayed();
+        boolean isCartDisplayed = inventoryPage.getHeaderComponent().isShoppingCartDisplayed();
 
         Assert.assertTrue(isCartDisplayed, "Login failed. Expected cart button was not displayed");
     }
