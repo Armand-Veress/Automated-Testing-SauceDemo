@@ -45,4 +45,12 @@ public class BaseComponent {
     protected WebElement getElement(By locator) {
         return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(container, locator));
     }
+
+    protected boolean isContainerDisplayed() {
+        try {
+            return container.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

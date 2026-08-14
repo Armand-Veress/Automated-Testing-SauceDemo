@@ -32,7 +32,21 @@ public class DataProviders {
         return new Object[][] {
              // [0] Page URL without BASE_URL
                 {Routes.INVENTORY},
-                {Routes.CART}
+                {Routes.CART},
+                {Routes.CHECKOUT_STEP_ONE},
+                {Routes.CHECKOUT_STEP_TWO},
+                {Routes.CHECKOUT_COMPLETE},
+                {Routes.INVENTORY_ITEM},
+        };
+    }
+
+    @DataProvider(name = "checkoutData", parallel = true)
+    public static Object[][] getCheckoutValidationData() {
+        return new Object[][] {
+                {"", "requiredFirstName", "", false, "Error: First Name is required"},
+                {"requiredLastName", "", "", false, "Error: Last Name is required"},
+                {"requiredPostalCode", "requiredZipCode", "", false, "Error: Postal Code is required"},
+                {"firstName", "lastName", "1020", true, ""},
         };
     }
 }

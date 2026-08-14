@@ -5,7 +5,9 @@
         <parameter name="browser" value="firefox"/>
         <parameter name="driverPath" value="drivers/geckodriver.exe"/>
         <classes>
-            <class name="tests.InventoryTest"/>
+            <class name="tests.functional.InventoryTest"/>
+            <class name="tests.functional.CartTest"/>
+            <class name="tests.functional.CheckoutTest"/>
         </classes>
     </test>
 
@@ -13,7 +15,9 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="driverPath" value="drivers/chromedriver.exe"/>
         <classes>
-            <class name="tests.InventoryTest"/>
+            <class name="tests.functional.InventoryTest"/>
+            <class name="tests.functional.CartTest"/>
+            <class name="tests.functional.CheckoutTest"/>
         </classes>
     </test>
 
