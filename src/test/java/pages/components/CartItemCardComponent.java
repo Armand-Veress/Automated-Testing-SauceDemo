@@ -12,15 +12,7 @@ public class CartItemCardComponent extends BaseComponent {
         super(driver, container);
     }
 
-    public boolean isRemoveFromCartButtonDisplayed() {
-        return isElementDisplayed(removeFromCartButton);
-    }
-
     public void clickRemove() {
         clickElement(removeFromCartButton);
-    }
-
-    public boolean isCartItemDisplayed() {
-        return isContainerDisplayed();
     }
 }

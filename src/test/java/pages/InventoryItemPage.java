@@ -33,10 +33,6 @@ public class InventoryItemPage extends BasePage {
         clickElement(removeFromCartButton);
     }
 
-    public boolean isGoBackButton() {
-        return isElementDisplayed(goBackButton);
-    }
-
     public void clickGoBack() {
         clickElement(goBackButton);
     }

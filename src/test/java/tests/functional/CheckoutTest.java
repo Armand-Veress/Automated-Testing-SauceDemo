@@ -18,12 +18,13 @@ public class CheckoutTest extends BaseTest {
         getDriver().get(baseUrl + Routes.LOGIN);
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginAs(DefaultUserCredentials.STANDARD_USER);
+
         InventoryPage inventoryPage = new InventoryPage(getDriver());
-        Assert.assertTrue(inventoryPage.getHeaderComponent().isShoppingCartDisplayed(), "Shopping cart icon is not displayed");
         inventoryPage.getHeaderComponent().clickShoppingCartButton();
+
         CartPage cartPage = new CartPage(getDriver());
-        Assert.assertTrue(cartPage.isGoToCheckoutButtonDisplayed());
         cartPage.clickGoToCheckoutButton();
+
         String currentUrl = getDriver().getCurrentUrl();
         Assert.assertEquals(currentUrl, baseUrl + Routes.CHECKOUT_STEP_ONE, "Checkout's first step was not reached. Reached url: " + currentUrl);
 
@@ -55,15 +56,12 @@ public class CheckoutTest extends BaseTest {
         double subtotal = 0;
         for (int i=0; i < 6; i+=2) {
             ProductCardComponent it = inventoryPage.getProductById(i);
-            Assert.assertTrue(it.isAddToCartButtonDisplayed());
             it.clickAddToCart();
             subtotal += it.getProductPrice();
         }
 
-        Assert.assertTrue(inventoryPage.getHeaderComponent().isShoppingCartDisplayed(), "Shopping cart icon is not displayed");
         inventoryPage.getHeaderComponent().clickShoppingCartButton();
         CartPage cartPage = new CartPage(getDriver());
-        Assert.assertTrue(cartPage.isGoToCheckoutButtonDisplayed());
         cartPage.clickGoToCheckoutButton();
         String currentUrl = getDriver().getCurrentUrl();
         Assert.assertEquals(currentUrl, baseUrl + Routes.CHECKOUT_STEP_ONE, "Checkout's first step was not reached. Reached url: " + currentUrl);
@@ -74,17 +72,13 @@ public class CheckoutTest extends BaseTest {
         Assert.assertEquals(currentUrl, baseUrl + Routes.CHECKOUT_STEP_TWO, "Checkout's second step was not reached. Reached url: " + currentUrl);
 
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(getDriver());
-        Assert.assertTrue(checkoutStepTwoPage.isSubtotalTextDisplayed(), "Item subtotal is not displayed.");
         Assert.assertEquals(checkoutStepTwoPage.getSubtotal(), subtotal, "Item subtotal displayed does not correspond with the sum of selected product prices.");
 
-        Assert.assertTrue(checkoutStepTwoPage.isFinishCheckoutButtonDisplayed());
         checkoutStepTwoPage.clickFinishCheckoutButton();
-
         currentUrl = getDriver().getCurrentUrl();
         Assert.assertEquals(currentUrl, baseUrl + Routes.CHECKOUT_COMPLETE, "Checkout-complete page was not reached. Current url: " + currentUrl);
 
         CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(getDriver());
-        Assert.assertTrue(checkoutCompletePage.isStatusTitleTextDisplayed(), "Checkout complete title not displayed");
         Assert.assertEquals(checkoutCompletePage.getStatusTitle(), "Checkout: Complete!", "Checkout is not complete. A different title-message is displayed: " + checkoutCompletePage.getStatusTitle());
     }
 }

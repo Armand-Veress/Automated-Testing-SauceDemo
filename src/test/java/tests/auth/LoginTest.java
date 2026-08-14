@@ -41,5 +41,4 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(loginPage.closeErrorMessagePopupSuccessfully(), "Error when closing an expected error message.");
     }
-
 }

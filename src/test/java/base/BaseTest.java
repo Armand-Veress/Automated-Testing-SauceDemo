@@ -15,21 +15,16 @@ public class BaseTest {
         return driver.get();
     }
 
-    @Parameters({"browser", "driverPath", "browserPath"})
+    @Parameters({"browser", "driverPath"})
     @BeforeMethod
-    public void setUp(
-            @Optional String browser,
-            @Optional String driverPath,
-            @Optional String browserPath) {
+    public void setUp(@Optional String browser, @Optional String driverPath) {
 
         browser = resolveParameter(browser, "LOCAL_DEFAULT_BROWSER");
         driverPath = resolveParameter(driverPath, "LOCAL_DRIVER_PATH");
-        browserPath = resolveParameter(browserPath, "LOCAL_BROWSER_PATH");
 
         try {
             BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
-
-            driver.set(browserType.createDriver(driverPath, browserPath));
+            driver.set(browserType.createDriver(driverPath));
             getDriver().manage().window().maximize();
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Illegal argument: [" + browser + "] is not defined in BrowserType.");

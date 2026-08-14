@@ -13,7 +13,7 @@ import java.util.Map;
 public enum BrowserType {
     CHROME {
         @Override
-        public WebDriver createDriver(String driverPath, String browserPath) {
+        public WebDriver createDriver(String driverPath) {
             try {
                 System.setProperty("webdriver.chrome.driver", driverPath);
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -39,26 +39,9 @@ public enum BrowserType {
         }
     },
 
-    BRAVE {
-        @Override
-        public WebDriver createDriver(String driverPath, String browserPath) {
-            try {
-                System.setProperty("webdriver.chrome.driver", driverPath);
-                ChromeOptions options = new ChromeOptions();
-                if (browserPath != null && !browserPath.isEmpty()) {
-                    options.setBinary(browserPath);
-                }
-
-                return new ChromeDriver(options);
-            } catch (WebDriverException e) {
-                throw new RuntimeException("Error: couldn't initialize Brave. -> " + e.getMessage());
-            }
-        }
-    },
-
     FIREFOX {
         @Override
-        public WebDriver createDriver(String driverPath, String browserPath) {
+        public WebDriver createDriver(String driverPath) {
             try {
                 System.setProperty("webdriver.gecko.driver", driverPath);
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -72,5 +55,5 @@ public enum BrowserType {
         }
     };
 
-    public abstract WebDriver createDriver(String driverPath, String browserPath);
+    public abstract WebDriver createDriver(String driverPath);
 }

@@ -28,24 +28,12 @@ public class ProductCardComponent extends BaseComponent {
         return Integer.parseInt(extractedNumber);
     }
 
-    public boolean isProductLinkDisplayed() {
-        return isElementDisplayed(productLink);
-    }
-
     public void clickProductLink() {
         clickElement(productLink);
     }
 
-    public boolean isProductNameDisplayed() {
-        return isElementDisplayed(productName);
-    }
-
     public String getProductName() {
         return getElementText(productName);
-    }
-
-    public boolean isProductPriceDisplayed() {
-        return isElementDisplayed(productPrice);
     }
 
     public double getProductPrice() {

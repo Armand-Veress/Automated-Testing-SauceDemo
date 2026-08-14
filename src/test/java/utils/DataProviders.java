@@ -43,6 +43,7 @@ public class DataProviders {
     @DataProvider(name = "checkoutData", parallel = true)
     public static Object[][] getCheckoutValidationData() {
         return new Object[][] {
+             // [0] First name, [1] Last name, [2] Postal code, [3] isValidData, [4] Expected error message
                 {"", "requiredFirstName", "", false, "Error: First Name is required"},
                 {"requiredLastName", "", "", false, "Error: Last Name is required"},
                 {"requiredPostalCode", "requiredZipCode", "", false, "Error: Postal Code is required"},

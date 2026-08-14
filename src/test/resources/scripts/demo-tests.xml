@@ -17,15 +17,4 @@
         </classes>
     </test>
 
-<!--
-    <test name="Brave DemoTests">
-        <parameter name="browser" value="brave"/>
-        <parameter name="driverPath" value="drivers/chromedriver.exe"/>
-        <parameter name="browserPath" value="C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"/>
-        <classes>
-            <class name="tests.DemoTest"/>
-        </classes>
-    </test>
--->
-
 </suite>

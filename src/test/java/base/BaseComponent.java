@@ -31,12 +31,6 @@ public class BaseComponent {
         }
     }
 
-    protected void typeText(By locator, String text) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(container, locator));
-        element.clear();
-        element.sendKeys(text);
-    }
-
     protected String getElementText(By locator) {
         WebElement element = wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(container, locator));
         return element.getText();
@@ -44,13 +38,5 @@ public class BaseComponent {
 
     protected WebElement getElement(By locator) {
         return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(container, locator));
-    }
-
-    protected boolean isContainerDisplayed() {
-        try {
-            return container.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
     }
 }

@@ -16,10 +16,6 @@ public class CheckoutStepTwoPage extends BasePage {
         headerComponent = new HeaderComponent(driver);
     }
 
-    public boolean isSubtotalTextDisplayed() {
-        return isElementDisplayed(subtotalText);
-    }
-
     public double getSubtotal() {
         String subtotalText = getElementText(this.subtotalText);
         if (subtotalText == null || subtotalText.isEmpty()) {
@@ -28,10 +24,6 @@ public class CheckoutStepTwoPage extends BasePage {
 
         String itemTotal = subtotalText.replaceAll("[^0-9.]", "");
         return Double.parseDouble(itemTotal);
-    }
-
-    public boolean isFinishCheckoutButtonDisplayed() {
-        return isElementDisplayed(finishCheckoutButton);
     }
 
     public void clickFinishCheckoutButton() {

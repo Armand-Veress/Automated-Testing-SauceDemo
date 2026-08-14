@@ -24,12 +24,15 @@ public class AccessControlTest extends BaseTest {
     @Test(dataProvider = "protectedPages", dataProviderClass = DataProviders.class)
     public void testAccessLoggedOut(String page){
         String baseUrl = ConfigReader.getProperty("BASE_URL");
-        getDriver().get(baseUrl + Routes.LOGIN);
 
         getDriver().get(baseUrl + page);
 
+        org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(getDriver(), java.time.Duration.ofSeconds(3));
+        wait.until(org.openqa.selenium.support.ui.ExpectedConditions.urlToBe(baseUrl + Routes.LOGIN));
+
         String currentUrl = getDriver().getCurrentUrl();
         LoginPage loginPage = new LoginPage(getDriver());
+
         Assert.assertEquals(currentUrl, baseUrl + Routes.LOGIN, "LoggedOut User was not redirected to LogIn");
 
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed upon failed login attempt.");

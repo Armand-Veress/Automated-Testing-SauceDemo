@@ -36,10 +36,6 @@ public class CartPage extends BasePage {
         return headerComponent;
     }
 
-    public boolean isGoToCheckoutButtonDisplayed() {
-        return isElementDisplayed(goToCheckoutButton);
-    }
-
     public void clickGoToCheckoutButton() {
         clickElement(goToCheckoutButton);
     }

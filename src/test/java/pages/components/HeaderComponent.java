@@ -33,10 +33,6 @@ public class HeaderComponent extends BaseComponent {
         clickElement(shoppingCartButton);
     }
 
-    public boolean isHamburgerMenuButtonDisplayed() {
-        return isElementDisplayed(hamburgerMenuButton);
-    }
-
     public void clickHamburgerMenuButton() {
         clickElement(hamburgerMenuButton);
     }

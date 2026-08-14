@@ -27,9 +27,9 @@ public class InventoryTest extends BaseTest {
         List<ProductCardComponent> items =  inventoryPage.getAllProducts();
         int i=0;
         for(ProductCardComponent it : items) {
-            Assert.assertTrue(it.isAddToCartButtonDisplayed(), "Add to cart button is not displayed.");
             it.clickAddToCart();
             Assert.assertTrue(it.isRemoveFromCartButtonDisplayed(), "Item added to cart but no button to remove.");
+
             i++;
             Assert.assertTrue(inventoryPage.getHeaderComponent().isShoppingCartBadgeDisplayed());
             int badgeNumber = inventoryPage.getHeaderComponent().getShoppingCartBadgeNumber();
@@ -38,19 +38,19 @@ public class InventoryTest extends BaseTest {
 
         for (int j=0; j < inventoryPage.getAllProducts().size(); j++) {
             ProductCardComponent it = inventoryPage.getProductById(j);
-            Assert.assertTrue(it.isProductLinkDisplayed(), "Product link is not displayed");
             it.clickProductLink();
             InventoryItemPage inventoryItemPage = new InventoryItemPage(getDriver());
 
-            Assert.assertTrue(inventoryItemPage.isRemoveFromCartButtonDisplayed(), "Remove from cart button is not displayed.");
             inventoryItemPage.clickRemove();
             Assert.assertTrue(inventoryItemPage.isAddToCartButtonDisplayed(), "Item removed from the card but no button to add it back.");
+
             i--;
             int badgeNumber = inventoryItemPage.getHeaderComponent().getShoppingCartBadgeNumber();
             Assert.assertEquals(badgeNumber, i, "Shopping cart badge number was not decreased when item removed from cart");
 
             inventoryItemPage.clickAddToCart();
             Assert.assertTrue(inventoryItemPage.isRemoveFromCartButtonDisplayed(), "Item added to cart but no button to remove it was displayed.");
+
             i++;
             badgeNumber = inventoryItemPage.getHeaderComponent().getShoppingCartBadgeNumber();
             Assert.assertEquals(badgeNumber, i, "Shopping cart badge number was not increased when item added to cart");
@@ -61,7 +61,6 @@ public class InventoryTest extends BaseTest {
         inventoryPage = new InventoryPage(getDriver());
         items =  inventoryPage.getAllProducts();
         for(ProductCardComponent it : items) {
-            Assert.assertTrue(it.isRemoveFromCartButtonDisplayed());
             it.clickRemove();
             Assert.assertTrue(it.isAddToCartButtonDisplayed());
             i--;

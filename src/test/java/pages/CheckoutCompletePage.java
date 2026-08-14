@@ -15,10 +15,6 @@ public class CheckoutCompletePage extends BasePage {
         headerComponent = new HeaderComponent(driver);
     }
 
-    public boolean isStatusTitleTextDisplayed() {
-        return isElementDisplayed(statusTitleText);
-    }
-
     public String getStatusTitle(){
         return getElementText(statusTitleText);
     }
