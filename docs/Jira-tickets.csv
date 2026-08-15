@@ -1,0 +1,230 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Labels,Labels,Labels,Labels,Description,Environment,Watchers,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Inward issue link (Blocks),Outward issue link (Blocks),Outward issue link (Blocks),Inward issue link (Relates),Inward issue link (Relates),Outward issue link (Relates),Attachment,Custom field (Development),Custom field (Issue color),Custom field (Rank),Custom field (Start date),Custom field (Team),Custom field (Vulnerability),Comment,Parent,Parent key,Parent summary,Status Category,Status Category Changed
+"Functional bug: Inventory sorting criteria is fixed on ""Name (A to Z)""",PIAMTK-40,10557,Bug,To Do,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 11:07 PM,15/Aug/26 11:33 AM,15/Aug/26 1:48 PM,,,0,ManualTesting,,,,"h3. Technical details:
+
+* *Browser:* Brave Browser 1.93.134; Chromium 151.0.7922.108
+* *Login credentials:* username - “_problem_user”;_ password - “_secret_sauce_“
+
+h3. Bug description
+
+* The select options menu is displayed correctly
+* Any choice selected results in the same fixed sorting criteria: _Name (A to Z)_
+
+*Steps to reproduce:* 
+-> +Login+ (username - “_problem_user”;_ password - “_secret_sauce_“)
+
+→ +Click+ the sorting dropdown option menu
+
+→ +Select+ any of the other 3 sorting criteria (e.g. “Price (low to high)” )
+
+ 
+
+*Expected behavior:* Sorting criteria to be updated and inventory-items to be sorted
+*Actual behavior:* Nothing happens, sorting criteria is fixed on “_Name (A to Z)_“",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0007z:,,,,,10352,PIAMTK-27,Manual Testing - identify bugs,To Do,14/Aug/26 11:07 PM
+"Functional bug: Reset App State button does not change ""Remove"" button back to ""Add to cart"" button.",PIAMTK-39,10556,Bug,To Do,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 10:54 PM,15/Aug/26 11:34 AM,15/Aug/26 11:36 AM,,,0,ManualTesting,,,,"h3. Technical details:
+
+* *Browser:* Brave Browser 1.93.134; Chromium 151.0.7922.108
+* *Login credentials:* username - “_standard_user”;_ password - “_secret sauce_“
+
+h3. Bug description:
+
+* The *Reset app state* button removes the selected items from the cart correctly, but +does not update+ visually the “Remove” button back to “Add to cart” for the individual product cards
+* In the attached picture, 2 items were selected, then app state was reset. One more item was selected, resulting in 3 items appearing as selected, but only a “1” in the shopping cart badge icon.
+
+
+
+*Steps to reproduce:* 
+-> +Login+ (username - “_standard_user”;_ password - “_secret_sauce_“)
+
+→ +Click+ “*Add to cart*” button for 2 different products
+
+→ +Click+ the *expand-side-menu* button in the upper-right corner
+
+→ +Click+ “*Reset App State*” button
+
+→ +Click+ “*Add to cart*” button for a third different product
+
+
+
+*Expected behavior:* When clicking the “Reset App State”, the “Remove” button from all previously selected items +should be replaced+ with the “*Add to cart*” button
+*Actual behavior:* Items are removed from cart, but the “Remove” button is still displayed",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,14/Aug/26 10:51 PM;4f649c79-d7da-4bd4-8818-5a347df2773a;image-20260814-195143.png;https://armandveress.atlassian.net/rest/api/3/attachment/content/10003,,,0|i0007r:,,,,,10352,PIAMTK-27,Manual Testing - identify bugs,To Do,14/Aug/26 10:54 PM
+Logic bug: User can proceed to checkout with empty shopping cart,PIAMTK-37,10554,Bug,To Do,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 10:43 PM,15/Aug/26 11:35 AM,15/Aug/26 11:34 AM,,,0,ManualTesting,,,,"h3. Technical details:
+
+* *Browser:* Brave Browser 1.93.134; Chromium 151.0.7922.108
+* *Login credentials:* username - “_standard_user”;_ password - “_secret_sauce_“
+
+h3. Bug description:
+
+The user should receive a warning-message of an empty cart, when trying to go to checkout.
+
+*Steps to reproduce:* 
+-> +Login+ (username - “_standard_user”;_ password - “_secret_sauce_“)
+
+→ +Click+ *cart icon* button
+
+→ +Click+ “*Checkout*” button
+
+→ +Enter+ anything in all 3 fields (e.g. First name - “validFirstName”; Last name - “validLastName”; Postal code - “1020”)
+
+→ +Click+ “*Continue*” button to proceed
+
+→ +Click+ “*Finish*” button
+
+→ +Click+ “*Generate PDF order*” and save the confirmation-document
+
+*Expected behavior:* When clicking the “Checkout” button, the user should not be allowed to proceed with an empty cart and receive a warning message (e.g. “Can’t proceed with empty basket”)
+*Actual behavior:* The case of an empty cart is not covered and a user can complete a +null order+.",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,14/Aug/26 10:43 PM;4f649c79-d7da-4bd4-8818-5a347df2773a;empty-cart-bug_order-confirmation.pdf;https://armandveress.atlassian.net/rest/api/3/attachment/content/10001,,,0|i0007j:,,,,,10352,PIAMTK-27,Manual Testing - identify bugs,To Do,14/Aug/26 10:43 PM
+Write a test that validates checkout's subtotal and completes an order,PIAMTK-36,10521,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 6:38 PM,14/Aug/26 6:38 PM,,14/Aug/26 6:38 PM,,0,Automation,QA,,,"* Test that the sum of prices of the selected cart-items is displayed corrected as *items subtotal*
+* Test a *completed order*",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0006z:,,,,,10486,PIAMTK-33,Write a test suite for the entire checkout process,Done,14/Aug/26 6:38 PM
+Write test for checkout data validation,PIAMTK-35,10488,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 4:34 PM,14/Aug/26 6:36 PM,,14/Aug/26 6:36 PM,,0,Automation,QA,,,Ensure data validation works properly for required fields,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0007b:,,,,,10486,PIAMTK-33,Write a test suite for the entire checkout process,Done,14/Aug/26 6:36 PM
+Test cart list behaviour,PIAMTK-34,10487,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 4:32 PM,14/Aug/26 4:32 PM,,14/Aug/26 4:32 PM,,0,Automation,QA,,,Ensure that the cart page is *synchronized* with the inventory and the *selected items* are displayed.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i00073:,,,,,10486,PIAMTK-33,Write a test suite for the entire checkout process,Done,14/Aug/26 4:32 PM
+Write a test suite for the entire checkout process,PIAMTK-33,10486,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 4:30 PM,14/Aug/26 6:38 PM,14/Aug/26 6:38 PM,14/Aug/26 6:38 PM,,0,Automation,FunctionalTest,QA,,"* Test *cart list behavior* and +synchronization with inventory+
+* Test *total sum* displayed in the checkout’s first step is correct
+* Test *checkout data validation*",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,blue,0|i0006v:,,,,,,,,Done,14/Aug/26 6:38 PM
+Test sorting function for inventory items,PIAMTK-32,10453,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 12:06 PM,14/Aug/26 12:07 PM,,14/Aug/26 12:07 PM,,0,Automation,QA,,,"Test sorting inventory items for each different sorting criteria:
+
+* A to Z
+* Z to A
+* low to high
+* high to low",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0006n:,,,,,10385,PIAMTK-28,Write an extensive testing suite for the inventory.html page,Done,14/Aug/26 12:07 PM
+Automation - Timeout bug: Remove button not displayed after adding to cart,PIAMTK-31,10420,Bug,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,14/Aug/26 9:10 AM,14/Aug/26 12:10 PM,14/Aug/26 12:10 PM,14/Aug/26 12:07 PM,,0,Automation,bug,QA,,"h3. Traceback:
+
+* *1* Failed test
+* *Script name:* functional-tests.xml
+* *Suite name:* SauceDemo FunctionalTests
+* *Test-Class name:* tests.InventoryTest
+* *Thrown assertion-error:*
+{noformat}java.lang.AssertionError: Item added to cart but no button to remove.
+Expected :true
+Actual   :false
+...
+at tests.InventoryTest.testAddToAndRemoveFromCart(InventoryTest.java:30){noformat}
+
+h3. *Technical details - Environment*
+
+* *Browser:* Google Chrome - v151.0.7922.137
+* *Driver:* _Chromium:_ [+https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.77/win64/chromedriver-win64.zip+|https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.77/win64/chromedriver-win64.zip]
+
+h3. Observations:
+
+* Debugging exception thrown in *BaseComponent* class, *isElementDisplayed()* Method:
+
+{noformat}Exception thrown: Element does not existExpected condition failed: waiting for presence of child element found by By.cssSelector: .btn_secondary.btn_inventory
+(tried for 3 seconds with 500 milliseconds interval)
+{noformat}",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,PIAMTK-29,,,,,,,,0|i00063:,,,,"14/Aug/26 10:53 AM;712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d;The test was failing due to Google Chrome’s aggressive pop-up behaviour.
+The bug was fixed with extensive ChromeOptions:
+
+{noformat}chromeOptions.addArguments(""--disable-features=PasswordLeakDetection"");
+                chromeOptions.addArguments(""--disable-notifications"");
+                chromeOptions.addArguments(""--disable-popup-blocking"");
+                chromeOptions.addArguments(""--disable-save-password-bubble"");
+
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put(""credentials_enable_service"", false);
+                prefs.put(""profile.password_manager_enabled"", false);
+                prefs.put(""profile.password_manager_leak_detection"", false);
+                prefs.put(""safebrowsing.enabled"", false);
+
+                chromeOptions.setExperimentalOption(""prefs"", prefs);{noformat}",10385,PIAMTK-28,Write an extensive testing suite for the inventory.html page,Done,14/Aug/26 12:07 PM
+Refactor the page-classes by separating shared components ,PIAMTK-30,10387,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 7:37 PM,13/Aug/26 7:37 PM,,13/Aug/26 7:37 PM,,0,Automation,cleanCode,QA,,"* Write a class for the *shared header* component
+* Write a class for the *shared side menu* component",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i00067:,,,,,10385,PIAMTK-28,Write an extensive testing suite for the inventory.html page,Done,13/Aug/26 7:37 PM
+Test adding / removing items to cart,PIAMTK-29,10386,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 6:39 PM,14/Aug/26 12:07 PM,14/Aug/26 12:06 PM,14/Aug/26 12:04 PM,,0,Automation,QA,,,"Test the *Add to cart* and *Remove* buttons +for each+ product, while validating the +updated+ *shopping cart badge number.*",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,PIAMTK-31,,,,,,,,,0|i0005z:,,,,,10385,PIAMTK-28,Write an extensive testing suite for the inventory.html page,Done,14/Aug/26 12:04 PM
+Write an extensive testing suite for the inventory.html page,PIAMTK-28,10385,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 6:36 PM,14/Aug/26 12:07 PM,14/Aug/26 12:07 PM,14/Aug/26 12:07 PM,,0,Automation,FunctionalTest,QA,,"Test core functions of the inventory.html page:
+
+* Test *Add to cart / Remove* buttons
+* Test that the *shopping cart badge* +is updated+ based on the number of products in cart
+* Test *sorting the products* based on different criteria
+* Test *navigation* to cart.html",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,yellow,0|i0005r:,,,,,,,,Done,14/Aug/26 12:07 PM
+Manual Testing - identify bugs,PIAMTK-27,10352,Epic,To Do,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 5:52 PM,13/Aug/26 5:52 PM,13/Aug/26 5:53 PM,,,0,ManualTesting,QA,scaredOfBugs,,"Explore the [Saucedemo|https://www.saucedemo.com/] site, *identify bugs* and +open detailed issue tickets+ about them:
+
+* Clearly state the *expected result* and the *actual result*
+* +List all steps+ to *reproduce the bug*
+* Add *technical context* (session, environment, etc.)
+* Give a *priority* accordingly, based on the severity / urgency of the error
+* Add any other attachments that may be useful in fixing the bug (e.g. screenshots, logs, etc.)",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,dark_yellow,0|i0005j:,,,,,,,,To Do,13/Aug/26 5:52 PM
+Make wrapper functions in BasePage to automatically handle WebDriverWait ,PIAMTK-26,10319,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 3:50 PM,13/Aug/26 4:29 PM,,13/Aug/26 4:29 PM,,0,Automation,cleanCode,QA,,"* Make an *isElementDisplayed* wrapper function, that calls 
+{noformat}wait.until(ExpectedConditions.visibilityOfElementLocated(locator));{noformat}
+* Make a *clickElement* wrapper function that calls 
+{noformat}wait.until(ExpectedConditions.elementToBeClickable(locator)).click();{noformat}",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0003p:i,,,,,10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 4:29 PM
+Automation - Flaky Test Bug: Logout button was not displayed in time for the test flow,PIAMTK-25,10286,Bug,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 2:26 PM,13/Aug/26 3:38 PM,14/Aug/26 10:46 AM,13/Aug/26 3:38 PM,,0,auth,Automation,bug,QA,"h3. Traceback:
+
+* *1* Failed test
+* *Script name:* auth-tests.xml  
+* *Suite name:* SauceDemo AuthTests 
+* *Test-Class name:* tests.auth.LogoutTest
+* *Thrown assertion-error:* 
+{noformat}java.lang.AssertionError: Logout button is not displayed.
+Expected :true
+Actual   :false
+[...]
+at tests.auth.LogoutTest.testLogout(LogoutTest.java:32){noformat}
+
+h3. *Technical details - Environment*
+
+* *Browser:* Google Chrome - v151.0.7922.137
+* *Driver:* _Chromium:_ [+https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.77/win64/chromedriver-win64.zip+|https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.77/win64/chromedriver-win64.zip]
+
+h3. Observations:
+
+* Manual test for this function was *successful*
+* There is a css transition for opening up the hamburger menu, *taking a fraction of a second for the logout button to be displayed*",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,PIAMTK-23,PIAMTK-21,,,,,,,0|i0005b:,,,,"13/Aug/26 3:38 PM;712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d;Bug / Issue was fixed by implementing explicit WebDriverWait in an inherited BasePage class.
+",10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 3:38 PM
+Update the @testAccessLoggedOut() from AccessControlTest class with a @DataProvider,PIAMTK-24,10253,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 12:49 PM,13/Aug/26 4:29 PM,13/Aug/26 4:19 PM,13/Aug/26 4:29 PM,,0,Automation,DataProvider,QA,,"Rewrite the “testAccessLoggedOut” method using a *DataProvider* for PROTECTED_PAGES, instead of a for-loop over a string list.
+
+*Reason: Fail-fast trap*
+
+* in its current form, if the test fails for the first page, the test will stop without checking the rest of the pages
+* with a data-provider, the test is executed individually for each page, highlighting if an eventual problem is related to a single page, or to the entire site.",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,PIAMTK-22,PIAMTK-17,,,,,0|i0003q:,,,,,10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 4:29 PM
+Write Logout testing suite,PIAMTK-23,10220,Story,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 9:57 AM,13/Aug/26 3:39 PM,13/Aug/26 3:39 PM,13/Aug/26 3:39 PM,,0,auth,Automation,QA,,"* Test *session synchronization* by accessing in a different tab the inventory page, before logging out
+* Test that buttons are +displayed+ and a user can *log out*
+* *SLO*: Test that once logged out, a user cannot access back the inventory page (+broken access+)",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,PIAMTK-25,,,,,PIAMTK-22,,,,0|i0003p:,,,,,10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 3:39 PM
+Write Broken Access Tests,PIAMTK-22,10219,Story,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 9:50 AM,13/Aug/26 12:59 PM,13/Aug/26 3:39 PM,13/Aug/26 12:59 PM,,0,auth,Automation,QA,,Validate that a +signed-out+ user *does not have access* to other pages and is *redirected back to Login page*. Check that the error message displayed.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,PIAMTK-17,,,PIAMTK-23,,PIAMTK-24,,,,0|i0003v:,,,,,10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 12:59 PM
+Write an extensive testing suite for Authentification,PIAMTK-21,10218,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 9:40 AM,13/Aug/26 5:52 PM,13/Aug/26 5:52 PM,13/Aug/26 5:52 PM,,0,auth,Automation,QA,,"* Test *Broken Access* and *URL page redirections*
+* Test *successful / failed Logins*
+* Test *Logouts*, *Single Log-out (SLO)*, *Session synchronization*",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,PIAMTK-25,,,,,,,,yellow,0|i0004n:,,,,,,,,Done,13/Aug/26 5:52 PM
+Enable parallel tests,PIAMTK-20,10185,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,13/Aug/26 9:11 AM,13/Aug/26 9:19 AM,,13/Aug/26 9:11 AM,,0,Automation,parallelTesting,QA,,"* Use *parallel* and *thread-count* attributes in the testing scripts
+* Implement *ThreadLocal* wrapper when initializing the driver in the _BaseTest_ class for Thread-safe tests running",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,PIAMTK-16,,,,,,0|i0001h:i,,,,,10112,PIAMTK-11,Rewrite the 2 demo tests,Done,13/Aug/26 9:11 AM
+Create the FailedLogin test,PIAMTK-19,10152,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,12/Aug/26 10:30 PM,13/Aug/26 9:44 AM,,13/Aug/26 9:44 AM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0004f:,,,,,10149,PIAMTK-16,Write Login Tests Suite,Done,13/Aug/26 9:44 AM
+Create the SuccessfulLogin test,PIAMTK-18,10151,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,12/Aug/26 10:30 PM,13/Aug/26 9:44 AM,,13/Aug/26 9:44 AM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i00047:,,,,,10149,PIAMTK-16,Write Login Tests Suite,Done,13/Aug/26 9:44 AM
+Create the DataProviders class file,PIAMTK-17,10150,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,12/Aug/26 10:29 PM,13/Aug/26 4:29 PM,13/Aug/26 12:37 PM,13/Aug/26 4:29 PM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,PIAMTK-22,,,,PIAMTK-24,,,,0|i0003z:,,,,,10149,PIAMTK-16,Write Login Tests Suite,Done,13/Aug/26 4:29 PM
+Write Login Tests Suite,PIAMTK-16,10149,Story,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,12/Aug/26 10:28 PM,13/Aug/26 9:44 AM,13/Aug/26 12:35 PM,13/Aug/26 9:44 AM,,0,,,,,"* Organize Login Credentials with DataProvider
+* Make a test that checks all valid login credentials attempts are successful
+* Make a test that checks all invalid login credentials attempts fail",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,PIAMTK-20,,,,0|i0003r:,,,,,10218,PIAMTK-21,Write an extensive testing suite for Authentification,Done,13/Aug/26 9:44 AM
+Rewrite the 2 tests from the demo-project in a DemoTest class file.,PIAMTK-15,10116,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 11:52 PM,13/Aug/26 9:28 AM,13/Aug/26 12:34 PM,12/Aug/26 4:33 PM,12/Aug/26 12:00 AM,0,,,,,Adapt the 2 tests from the demo-project to the current structure.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001i:i,,,,,10112,PIAMTK-11,Rewrite the 2 demo tests,Done,12/Aug/26 4:33 PM
+Write the LoginPage (Page-Object model),PIAMTK-14,10115,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 11:36 PM,13/Aug/26 9:24 AM,13/Aug/26 9:41 AM,11/Aug/26 11:38 PM,,0,,,,,"* Inspect the +login page+ and find all *relevant locators*. Map the elements to *private By variables*.
+* Write useful *public methods*, fulfilling *user actions* on our mapped elements.",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0000x:,,,,,10112,PIAMTK-11,Rewrite the 2 demo tests,Done,11/Aug/26 11:38 PM
+"Create an Enum BrowserType to serve as a ""factory"" for creating the browsers",PIAMTK-13,10114,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 11:01 PM,11/Aug/26 11:01 PM,,11/Aug/26 11:01 PM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0003j:,,,,,10113,PIAMTK-12,Implement a BaseTest class for initializing the Drivers. Test-classes will inherit the BaseTest class.,Done,11/Aug/26 11:01 PM
+Implement a BaseTest class for initializing the Drivers. Test-classes will inherit the BaseTest class.,PIAMTK-12,10113,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 10:55 PM,13/Aug/26 8:56 AM,11/Aug/26 10:56 PM,11/Aug/26 11:02 PM,,0,,,,,Implement a class the will support parameters and will initialize different types of Drivers.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001i:,,,,,10112,PIAMTK-11,Rewrite the 2 demo tests,Done,11/Aug/26 11:02 PM
+Rewrite the 2 demo tests,PIAMTK-11,10112,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 10:50 PM,13/Aug/26 9:22 AM,13/Aug/26 9:19 AM,13/Aug/26 9:22 AM,,0,,,,,"Use the demo with the simple tests as example and start building the project. Use the base structure and try following best practices:
+
+* *Exception handling* (throwing them with specific messages, while making sure they stop the failed tests)
+* *Encapsulation & separation of concerns*
+* *Clean code* without redundancies 
+* etc.",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,dark_green,0|i00033:,,,,,,,,Done,13/Aug/26 9:22 AM
+Implement a clean base structure for the Automation Project,PIAMTK-10,10111,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,11/Aug/26 10:41 PM,13/Aug/26 9:44 AM,13/Aug/26 9:19 AM,11/Aug/26 10:42 PM,12/Aug/26 12:00 AM,0,newToAutomationTesting,,,,"* Create a new *Java + Maven project*
+* Configure its core *dependencies (Selenium + TestNG)*
+* Download *2 distinct browser-drivers* and save them in a designated folder (/drivers)
+* Organize the project into 3 main packages:
+-> *base:* code for initializing the drivers
+
+      → *pages:* code for organizing and mapping buttons and fields
+
+      → *tests:* actual tests to be written",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001h:,,,,,10074,PIAMTK-5,Start working on the Automated Testing project,Done,11/Aug/26 10:42 PM
+Download corresponding driver,PIAMTK-9,10078,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 11:16 AM,11/Aug/26 10:18 PM,,11/Aug/26 10:18 PM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0002v:,,,,,10075,PIAMTK-6,Explore the Automated Testing demo.,Done,11/Aug/26 10:18 PM
+Clone Github Repo,PIAMTK-8,10077,Subtask,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 11:16 AM,11/Aug/26 10:18 PM,12/Aug/26 11:04 PM,11/Aug/26 10:18 PM,,0,,,,,,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0002n:,,,,,10075,PIAMTK-6,Explore the Automated Testing demo.,Done,11/Aug/26 10:18 PM
+Choose a subject for the Automated Testing project,PIAMTK-7,10076,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 11:04 AM,13/Aug/26 8:56 AM,11/Aug/26 10:18 PM,11/Aug/26 10:18 PM,,0,,,,,Choose a subject for the Automated Testing project and think of a suite of tests to be written.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0000z:,,,,,10074,PIAMTK-5,Start working on the Automated Testing project,Done,11/Aug/26 10:18 PM
+Explore the Automated Testing demo.,PIAMTK-6,10075,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 11:03 AM,15/Aug/26 12:14 PM,15/Aug/26 12:14 PM,11/Aug/26 10:18 PM,,0,,,,,"Explore the *Automated Testing demo* on GitHub
+
+Make sure to download the *browser’s driver* and to place it in the right folder.",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001f:,06/Aug/26 12:00 AM,,,,10074,PIAMTK-5,Start working on the Automated Testing project,Done,11/Aug/26 10:18 PM
+Start working on the Automated Testing project,PIAMTK-5,10074,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 10:59 AM,13/Aug/26 9:15 AM,13/Aug/26 9:15 AM,13/Aug/26 9:14 AM,,0,,,,,"Work toward the *Automated Testing project*:
+
+* Explore the +demo project+
+* Choose a +subject+ for the project
+* Write +testing scripts+",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,teal,0|i0001z:,,,,,,,,Done,13/Aug/26 9:14 AM
+Create a few different tickets and try linking them together.,PIAMTK-4,10073,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,High,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 10:52 AM,13/Aug/26 8:57 AM,13/Aug/26 8:59 AM,12/Aug/26 4:34 PM,,0,,,,,Explore with *creating tickets* and *linking them together.*,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001r:,,,,,10072,PIAMTK-3,Getting started with Jira,Done,12/Aug/26 4:34 PM
+Getting started with Jira,PIAMTK-3,10072,Epic,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 10:49 AM,13/Aug/26 9:15 AM,13/Aug/26 9:15 AM,13/Aug/26 9:15 AM,,0,,,,,"Make a new *Jira account*, configure a *space* for creating tickets, *explore tutorials and functionalities.*
+
++Do some tasks.+",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,dark_orange,0|i0001j:,,,,,,,,Done,13/Aug/26 9:15 AM
+Complete Get-Started-With-Jira Tutorial,PIAMTK-2,10071,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 10:43 AM,13/Aug/26 8:56 AM,,06/Aug/26 10:49 AM,,0,,,,,"Complete the recommended Atlassian University Course for new Jira users:
+
+[https://community.atlassian.com/learning/path/get-the-most-out-of-jira/course/get-started-with-jira|https://community.atlassian.com/learning/path/get-the-most-out-of-jira/course/get-started-with-jira?jobid=108129544&subid=200827139&send_date=8%2F1%2F2026]",,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i0001b:,,,,,10072,PIAMTK-3,Getting started with Jira,Done,06/Aug/26 10:49 AM
+Create Jira account and a space for tickets,PIAMTK-1,10070,Task,Done,PIAMTK,Learning Automation & Manual Testing -> saucedemo.com,software,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,Medium,Done,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,06/Aug/26 10:39 AM,13/Aug/26 8:56 AM,06/Aug/26 11:44 AM,06/Aug/26 10:39 AM,,0,newToJira,,,,Get started with a *Jira account* and configure *a space* for creating tickets.,,Armand Veress,712020:b53618f6-b6c0-4958-8c9a-cf22ac74fe8d,,,,,,,,,,,,,,,,,,0|i00013:,,,,,10072,PIAMTK-3,Getting started with Jira,Done,06/Aug/26 10:39 AM
